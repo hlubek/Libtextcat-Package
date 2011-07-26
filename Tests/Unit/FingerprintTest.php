@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Libtextcat\Tests\Unit;
+namespace Libtextcat\Tests\Unit;
 
 /*                                                                        *
  * This script belongs to the FLOW3 package "Libtextcat".          *
@@ -22,12 +22,14 @@ namespace F3\Libtextcat\Tests\Unit;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+use \Libtextcat\Textcat;
+
 /**
  * Fingerprint test
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class FingerprintTest extends \F3\FLOW3\Tests\UnitTestCase {
+class FingerprintTest extends \TYPO3\FLOW3\Tests\UnitTestCase {
 
 	/**
 	 * @test
@@ -35,7 +37,7 @@ class FingerprintTest extends \F3\FLOW3\Tests\UnitTestCase {
 	 */
 	public function textIsSplittedAndNgramsRanked() {
 		$text = file_get_contents(__DIR__ . '/Fixtures/german.txt');
-		$ranking = \F3\Libtextcat\Textcat::create($text, 400);
+		$ranking = Textcat::create($text, 400);
 		$this->assertEquals(400, count($ranking));
 		$this->assertEquals('_', key($ranking));
 	}
@@ -45,7 +47,7 @@ class FingerprintTest extends \F3\FLOW3\Tests\UnitTestCase {
 	 * @author Christopher Hlubek <hlubek@networkteam.com>
 	 */
 	public function classifyDetectsLanguages() {
-		$textcat = new \F3\Libtextcat\Textcat();
+		$textcat = new Textcat();
 
 		$text = file_get_contents(__DIR__ . '/Fixtures/german.txt');
 		$this->assertEquals('de', $textcat->classify($text));

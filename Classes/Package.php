@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Libtextcat;
+namespace Libtextcat;
 
 /*                                                                        *
  * This script belongs to the FLOW3 package "Libtextcat".          *
@@ -22,7 +22,7 @@ namespace F3\Libtextcat;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use \F3\FLOW3\Package\Package as BasePackage;
+use \TYPO3\FLOW3\Package\Package as BasePackage;
 
 /**
  * The Libtextcat Package

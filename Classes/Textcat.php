@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Libtextcat;
+namespace Libtextcat;
 
 /*                                                                        *
  * This script belongs to the FLOW3 package "Libtextcat".          *
@@ -111,7 +111,7 @@ class Textcat {
 	 */
 	protected function readFingerprint($category) {
 		$fingerprint = array();
-		$fp = fopen('resource://Libtextcat/Private/' . $category . '.lm', 'r');
+		$fp = fopen(__DIR__ . '/../Resources/Private/' . $category . '.lm', 'r');
 		for ($rank = 1; ($row = fgets($fp)) !== FALSE; $rank++) {
 			list($ngram) = explode("\t", $row, 2);
 			$fingerprint[$ngram] = $rank;
