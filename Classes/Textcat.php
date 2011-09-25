@@ -111,7 +111,13 @@ class Textcat {
 	 */
 	protected function readFingerprint($category) {
 		$fingerprint = array();
-		$fp = fopen(__DIR__ . '/../Resources/Private/' . $category . '.lm', 'r');
+
+		if (file_exists(__DIR__ . '/../Resources/Private/' . $category . '.lm')) {
+			$filename = __DIR__ . '/../Resources/Private/' . $category . '.lm';
+		} else {
+			$filename = 'resource://Libtextcat/Private/' . $category . '.lm';
+		}
+		$fp = fopen($filename, 'r');
 		for ($rank = 1; ($row = fgets($fp)) !== FALSE; $rank++) {
 			list($ngram) = explode("\t", $row, 2);
 			$fingerprint[$ngram] = $rank;
